@@ -4,59 +4,59 @@
 #include <string>
 using namespace std;
 
-//ÉùÃ÷½á¹¹Ìåpiece£¬ÓÃÀ´´æ´¢Æå×ÓĞÅÏ¢
+//å£°æ˜ç»“æ„ä½“pieceï¼Œç”¨æ¥å­˜å‚¨æ£‹å­ä¿¡æ¯
 struct piece
 {
-	//ÓÃÀ´ÅĞ¶ÏÆå×ÓÊÇ·ñ´æ»î,false_alive,true_dead
+	//ç”¨æ¥åˆ¤æ–­æ£‹å­æ˜¯å¦å­˜æ´»,false_alive,true_dead
 	bool dead;
 
-	//ÓÃÀ´Çø·ÖÆå×ÓËùÊôÕóÓª,false_red,true_black
+	//ç”¨æ¥åŒºåˆ†æ£‹å­æ‰€å±é˜µè¥,false_red,true_black
 	bool color;
 
-	//ÓÃÀ´ÅĞ¶¨Æå×ÓÀàĞÍ£¬7_±ø£¬1_ÅÚ£¬2_³µ£¬3_Âí£¬4_Ïó£¬5_Ê¿£¬6_Ë§
+	//ç”¨æ¥åˆ¤å®šæ£‹å­ç±»å‹ï¼Œ7_å…µï¼Œ1_ç‚®ï¼Œ2_è½¦ï¼Œ3_é©¬ï¼Œ4_è±¡ï¼Œ5_å£«ï¼Œ6_å¸…
 	int chessType;
 
-	//Æå×Ó×ø±ê
+	//æ£‹å­åæ ‡
 	int x;
 	int y;
 };
 
-//ÓÃÓÚ·µ»ØÃüÁîÖĞµÄÎ»ÖÃ×ø±ê£¬Ó¦µ±×¢ÒâµÄÊÇ£¬¡°ÅÚ°Ë½øÎå¡±ÕâÀàÃüÁîÖĞµÄºóÒ»¸öÊı¡°Îå¡±²»Ó¦Ê¹ÓÃ´Ëº¯Êı;¶ø¡°ÅÚ°ËÆ½Îå¡±ÖĞµÄÊı×Ö¡°°Ë¡±¡°Îå¡±¶¼ÊôÓÚÎ»ÖÃ×ø±ê
-//¿ÉÒÔ½«ÃüÁîÖĞµÄÊı×Ö·ÖÎªÁ½ÖÖ£¬Ò»ÖÖÎªÎ»ÖÃ×ø±ê£¬ÁíÒ»ÖÖÎªÒÆ¶¯¾àÀë£¬´Ëº¯Êı½öÓÃÓÚÎ»ÖÃ×ø±ê
+//ç”¨äºè¿”å›å‘½ä»¤ä¸­çš„ä½ç½®åæ ‡ï¼Œåº”å½“æ³¨æ„çš„æ˜¯ï¼Œâ€œç‚®å…«è¿›äº”â€è¿™ç±»å‘½ä»¤ä¸­çš„åä¸€ä¸ªæ•°â€œäº”â€ä¸åº”ä½¿ç”¨æ­¤å‡½æ•°;è€Œâ€œç‚®å…«å¹³äº”â€ä¸­çš„æ•°å­—â€œå…«â€â€œäº”â€éƒ½å±äºä½ç½®åæ ‡
+//å¯ä»¥å°†å‘½ä»¤ä¸­çš„æ•°å­—åˆ†ä¸ºä¸¤ç§ï¼Œä¸€ç§ä¸ºä½ç½®åæ ‡ï¼Œå¦ä¸€ç§ä¸ºç§»åŠ¨è·ç¦»ï¼Œæ­¤å‡½æ•°ä»…ç”¨äºä½ç½®åæ ‡
 int posNum(bool isBlack, string com)
 {
 	int position = 0;
 
-	//ºì·½ÃüÁî
+	//çº¢æ–¹å‘½ä»¤
 	if (isBlack == false)
 	{
-		if (com=="Ò»")position = 1;
-		else if (com == "¶ş")position = 2;
-		else if (com == "Èı")position = 3;
-		else if (com == "ËÄ")position = 4;
-		else if (com == "Îå")position = 5;
-		else if (com == "Áù")position = 6;
-		else if (com == "Æß")position = 7;
-		else if (com == "°Ë")position = 8;
-		else if (com == "¾Å")position = 9;
+		if (com=="ä¸€")position = 1;
+		else if (com == "äºŒ")position = 2;
+		else if (com == "ä¸‰")position = 3;
+		else if (com == "å››")position = 4;
+		else if (com == "äº”")position = 5;
+		else if (com == "å…­")position = 6;
+		else if (com == "ä¸ƒ")position = 7;
+		else if (com == "å…«")position = 8;
+		else if (com == "ä¹")position = 9;
 		else
 		{
 			cout << "Error001:outsize." << endl;
 		}
 	}
 
-	//ºÚ·½ÃüÁî
+	//é»‘æ–¹å‘½ä»¤
 	else if (isBlack == true)
 	{
-		if (com == "Ò»")position = 9;
-		else if (com == "¶ş")position = 8;
-		else if (com == "Èı")position = 7;
-		else if (com == "ËÄ")position = 6;
-		else if (com == "Îå")position = 5;
-		else if (com == "Áù")position = 4;
-		else if (com == "Æß")position = 3;
-		else if (com == "°Ë")position = 2;
-		else if (com == "¾Å")position = 1;
+		if (com == "ä¸€")position = 9;
+		else if (com == "äºŒ")position = 8;
+		else if (com == "ä¸‰")position = 7;
+		else if (com == "å››")position = 6;
+		else if (com == "äº”")position = 5;
+		else if (com == "å…­")position = 4;
+		else if (com == "ä¸ƒ")position = 3;
+		else if (com == "å…«")position = 2;
+		else if (com == "ä¹")position = 1;
 		else
 		{
 			cout << "Error001:outsize." << endl;
@@ -65,7 +65,7 @@ int posNum(bool isBlack, string com)
 	return position;
 }
 
-//´òÓ¡ÆåÅÌ£¨¶şÎ¬Êı×é£©
+//æ‰“å°æ£‹ç›˜ï¼ˆäºŒç»´æ•°ç»„ï¼‰
 void showBoard(string checkerBoard[10][9])
 {
 	cout << endl;
@@ -80,36 +80,36 @@ void showBoard(string checkerBoard[10][9])
 	}
 }
 
-//Æå×ÓÀàĞÍÊ¶±ğ,·µ»Ø×Ö·û´®
+//æ£‹å­ç±»å‹è¯†åˆ«,è¿”å›å­—ç¬¦ä¸²
 string strType(int chessType)
 {
 	//chess.chessType
 	switch (chessType)
 	{
 	case 1:
-		return " ÅÚ";
+		return " ç‚®";
 	case 2:
-		return " ³µ";
+		return " è½¦";
 	case 3:
-		return " Âí";
+		return " é©¬";
 	case 4:
-		return " Ïó";
+		return " è±¡";
 	case 5:
-		return " Ê¿";
+		return " å£«";
 	case 6:
-		return " Ë§";
+		return " å¸…";
 	case 7:
-		return " ±ø";
+		return " å…µ";
 	default:
 		cout << "Error404:no such chess type.";
 		break;
 	}
 }
 
-//¸üĞÂÆåÅÌ
+//æ›´æ–°æ£‹ç›˜
 void updataBoard(string checkerBoard[10][9], piece chess[32])
 {
-	//ÆåÅÌ¹éÁã
+	//æ£‹ç›˜å½’é›¶
 	for (int i = 0; i < 10; i++)
 	{
 		for (int j = 0; j < 9; j++)
@@ -119,7 +119,7 @@ void updataBoard(string checkerBoard[10][9], piece chess[32])
 		
 	}
 
-	//ÖØĞÂ»æÖÆ
+	//é‡æ–°ç»˜åˆ¶
 	for (int i = 0; i < 32; i++)
 	{
 		if (chess[i].dead == false)
@@ -129,14 +129,14 @@ void updataBoard(string checkerBoard[10][9], piece chess[32])
 	}
 }
 
-//ÅĞ¶ÏÖ¸¶¨µãÊÇ·ñ´æÔÚÕÏ°­Îï,´æÔÚÔò·µ»ØÕÏ°­ÎïĞòºÅ£¬²»´æÔÚ·µ»Ø-1
+//åˆ¤æ–­æŒ‡å®šç‚¹æ˜¯å¦å­˜åœ¨éšœç¢ç‰©,å­˜åœ¨åˆ™è¿”å›éšœç¢ç‰©åºå·ï¼Œä¸å­˜åœ¨è¿”å›-1
 int chessBlock(piece chess[32],int x,int y)
 {
 	for (int i = 0; i < 32; i++)
 	{
 		if (chess[i].dead==false && chess[i].x == x && chess[i].y == y)
 		{
-			//cout << "Error002:there is a chessman here" << endl;//±¨´íĞÅÏ¢
+			//cout << "Error002:there is a chessman here" << endl;//æŠ¥é”™ä¿¡æ¯
 			return i;
 		}
 	}
@@ -145,13 +145,13 @@ int chessBlock(piece chess[32],int x,int y)
 
 int main()
 {
-	//³õÊ¼»¯ÆåÅÌ
+	//åˆå§‹åŒ–æ£‹ç›˜
 	string checkerBoard[10][9] = {};
 	showBoard(checkerBoard);
 	cout << endl;
 	
 	//(dead,color,chessType,x,y)
-	//³õÊ¼»¯È«²¿ºìºÚË«·½32¸öÆå×Ó£¬Ó¦µ±×¢ÒâµÄÊÇ£¬³õÊ¼»¯ºÚ·½µÄÊ±ºò£¬×ø±êÊÇ°´ÕÕºì·½À´£¬Éèºì·½Îª»ù×¼£¬ÕâÀïÒÔºìÅÚÎªÀı
+	//åˆå§‹åŒ–å…¨éƒ¨çº¢é»‘åŒæ–¹32ä¸ªæ£‹å­ï¼Œåº”å½“æ³¨æ„çš„æ˜¯ï¼Œåˆå§‹åŒ–é»‘æ–¹çš„æ—¶å€™ï¼Œåæ ‡æ˜¯æŒ‰ç…§çº¢æ–¹æ¥ï¼Œè®¾çº¢æ–¹ä¸ºåŸºå‡†ï¼Œè¿™é‡Œä»¥çº¢ç‚®ä¸ºä¾‹
 	struct piece chess[32];
 	chess[0] = { false, false, 2, 1, 1 };
 	chess[1] = { false, false, 3, 2, 1 };
@@ -174,14 +174,14 @@ int main()
 	updataBoard(checkerBoard, chess);
 	showBoard(checkerBoard);
 
-	//²¼¶û±äÁ¿È·¶¨ÏÂ´ïÃüÁîµÄÕóÓª,Ä¬ÈÏÎªºìÉ«
+	//å¸ƒå°”å˜é‡ç¡®å®šä¸‹è¾¾å‘½ä»¤çš„é˜µè¥,é»˜è®¤ä¸ºçº¢è‰²
 	bool isBlack = false;
-	//ÅĞ¶ÏÊÇ·ñÒì³£
+	//åˆ¤æ–­æ˜¯å¦å¼‚å¸¸
 	bool ifError = false;
-	//ÓÃÀ´ÅĞ¶ÏÊÇ·ñ´æÔÚÕÏ°­Îï£¨Ö¸¶¨µãÊÇ·ñ´æÔÚÆäËûÆå×Ó£©
+	//ç”¨æ¥åˆ¤æ–­æ˜¯å¦å­˜åœ¨éšœç¢ç‰©ï¼ˆæŒ‡å®šç‚¹æ˜¯å¦å­˜åœ¨å…¶ä»–æ£‹å­ï¼‰
 	//bool chessmanHere = false;
 
-	//ÊäÈëÃüÁî£¬ÕâÀïÊÇ¿ØÖÆÌ¨ÊäÈë£¬Õı³£Ó¦¸ÃÓïÒôÊ¶±ğ³öÕâ²¿·ÖÄÚÈİ£¬ÕâÀïÊäÈëÄÚÈİÎª¡°ÅÚ°ËÆ½Îå¡±
+	//è¾“å…¥å‘½ä»¤ï¼Œè¿™é‡Œæ˜¯æ§åˆ¶å°è¾“å…¥ï¼Œæ­£å¸¸åº”è¯¥è¯­éŸ³è¯†åˆ«å‡ºè¿™éƒ¨åˆ†å†…å®¹ï¼Œè¿™é‡Œè¾“å…¥å†…å®¹ä¸ºâ€œç‚®å…«å¹³äº”â€
 	string command;
 	cout << "your command:";
 	cin >> command;
@@ -191,37 +191,37 @@ int main()
 	//cout << command<<endl;//test
 	//cout << command.substr(4, 2) << endl;//test
 
-	//¶Ô´«ÈëÃüÁî½øĞĞ·ÖÎö£¬Ê×ÏÈ´ÓµÚÒ»¸ö×Ö¿ªÊ¼£¬È·¶¨Æå×ÓÀàĞÍ£¬´Ó¶øÈ·¶¨ĞĞ¶¯·½Ê½
-	if (command.substr(0, 2) == "ÅÚ")
+	//å¯¹ä¼ å…¥å‘½ä»¤è¿›è¡Œåˆ†æï¼Œé¦–å…ˆä»ç¬¬ä¸€ä¸ªå­—å¼€å§‹ï¼Œç¡®å®šæ£‹å­ç±»å‹ï¼Œä»è€Œç¡®å®šè¡ŒåŠ¨æ–¹å¼
+	if (command.substr(0, 2) == "ç‚®")
 	{
 		int posA = posNum(isBlack, command.substr(2, 2));
-		if (isBlack == false && command.substr(2, 2) == "°Ë")
+		if (isBlack == false && command.substr(2, 2) == "å…«")
 		{
-			//±éÀúËùÓĞÆå×Ó
+			//éå†æ‰€æœ‰æ£‹å­
 			for (int i = 0; i<32; i++)
 			{
 				//cout << i << endl;//test
-				//ÕÒµ½Ä¿±êÆå×Ó£¬Ö´ĞĞĞĞ¶¯ÃüÁî
+				//æ‰¾åˆ°ç›®æ ‡æ£‹å­ï¼Œæ‰§è¡Œè¡ŒåŠ¨å‘½ä»¤
 				if (chess[i].dead == false && chess[i].color == false && chess[i].chessType == 1 && chess[i].x == 8)
 				{
 					//cout << "hello"<<endl;//test
-					//¶ÁÈ¡µÚÈı¸ö×Ö£¬ÎªĞĞ¶¯ÀàĞÍ,ÆäËû»¹ÓĞ¡°½ø¡±¡¢¡°ÍË¡±Á½ÖÖÀàĞÍ
-					if (command.substr(4, 2) == "Æ½")
+					//è¯»å–ç¬¬ä¸‰ä¸ªå­—ï¼Œä¸ºè¡ŒåŠ¨ç±»å‹,å…¶ä»–è¿˜æœ‰â€œè¿›â€ã€â€œé€€â€ä¸¤ç§ç±»å‹
+					if (command.substr(4, 2) == "å¹³")
 					{
-						//¶ÁÈ¡µÚËÄ¸ö×Ö£¬ÎªÂäµã
-						if (command.substr(6, 2) == "Îå")
+						//è¯»å–ç¬¬å››ä¸ªå­—ï¼Œä¸ºè½ç‚¹
+						if (command.substr(6, 2) == "äº”")
 						{
 							int posB = posNum(isBlack, command.substr(6, 2));
 							
 							//cout << "h" << endl;//test
-							//¹Û²ìÔË¶¯Â·¾¶¼°ÂäµãÇé¿ö
+							//è§‚å¯Ÿè¿åŠ¨è·¯å¾„åŠè½ç‚¹æƒ…å†µ
 							//for (int j = 0; j<32; j++)
 							//{
 							//	//cout << j << endl;//test
-							//	//ÔË¶¯Â·¾¶¼°Âäµã
+							//	//è¿åŠ¨è·¯å¾„åŠè½ç‚¹
 							//	if (chess[j].dead == false && chess[j].y == chess[i].y)
 							//	{
-							//		//ÔË¶¯Â·¾¶ÉÏÈç¹ûÓĞÆäËüÆå×ÓµÄ»°£¬±¨´íÍË³öÑ­»·
+							//		//è¿åŠ¨è·¯å¾„ä¸Šå¦‚æœæœ‰å…¶å®ƒæ£‹å­çš„è¯ï¼ŒæŠ¥é”™é€€å‡ºå¾ªç¯
 							//		if (chess[j].x == 7 || chess[j].x == 6)
 							//		{
 							//			cout << "error";
@@ -229,7 +229,7 @@ int main()
 							//			break;
 							//		}
 
-							//		//ÂäµãÎª¼º·½Æå×Ó£¬±¨´íÍË³öÑ­»·
+							//		//è½ç‚¹ä¸ºå·±æ–¹æ£‹å­ï¼ŒæŠ¥é”™é€€å‡ºå¾ªç¯
 							//		else if (chess[j].x == 5 && chess[j].color == chess[i].color)
 							//		{
 							//			cout << "error";
@@ -237,16 +237,16 @@ int main()
 							//			break;
 							//		}
 
-							//		//ÂäµãÎª¶Ô·½Æå×Ó£¬Ôò³Ôµô¶Ô·½Æå×Ó£¬¸Ä±ä¶Ô·½Æå×Ó´æ»î×´¿ö
+							//		//è½ç‚¹ä¸ºå¯¹æ–¹æ£‹å­ï¼Œåˆ™åƒæ‰å¯¹æ–¹æ£‹å­ï¼Œæ”¹å˜å¯¹æ–¹æ£‹å­å­˜æ´»çŠ¶å†µ
 							//		else if (chess[j].x == 5 && chess[j].color != chess[i].color)
 							//		{
-							//			//¶Ô·½Æå×ÓËÀÍö
+							//			//å¯¹æ–¹æ£‹å­æ­»äº¡
 							//			chess[j].dead = true;
 							//		}
 							//	}
 							//}
 
-							//ÏòÓÒÒÆ¶¯
+							//å‘å³ç§»åŠ¨
 							if (posA < posB)
 							{
 								for (int j = posA+1; j < posB; j++)
@@ -259,7 +259,7 @@ int main()
 									}
 								}
 							}
-							//Ïò×óÒÆ¶¯
+							//å‘å·¦ç§»åŠ¨
 							else if (posA > posB)
 							{
 								for (int j = posA-1; j > posB; j--)
@@ -274,20 +274,20 @@ int main()
 								}
 							}
 							
-							//Âäµã¼ì²â£¬Èç¹ûÎª¼º·½Æå×ÓÔò±¨´í
+							//è½ç‚¹æ£€æµ‹ï¼Œå¦‚æœä¸ºå·±æ–¹æ£‹å­åˆ™æŠ¥é”™
 							if (chessBlock(chess, posB, chess[i].y) != -1 && chess[chessBlock(chess, posB, chess[i].y)].color == chess[i].color)
 							{
 								cout << "Error003:here your chessman.";
 								ifError == true;
 								break;
 							}
-							//ÎªµĞ·½Æå×Ó£¬Ôò³Ôµô¶Ô·½£¬¸Ä±äµĞ·½Æå×Ó×´Ì¬(ÅÚ²»ÄÜÖ±½Ó³Ô£¬ĞèÒªÅĞ¶¨¡°ÅÚ¼Ü¡±)
+							//ä¸ºæ•Œæ–¹æ£‹å­ï¼Œåˆ™åƒæ‰å¯¹æ–¹ï¼Œæ”¹å˜æ•Œæ–¹æ£‹å­çŠ¶æ€(ç‚®ä¸èƒ½ç›´æ¥åƒï¼Œéœ€è¦åˆ¤å®šâ€œç‚®æ¶â€)
 							else if (chessBlock(chess, posB, chess[i].y) != -1 && isBlack != chess[i].color)
 							{
 								chess[chessBlock(chess, posB, chess[i].y)].dead = true;
 							}
 
-							//Ä¿±êÆå×Ó×ø±ê¸Ä±ä£¬Æ½ÒÆÖÁÂäµã
+							//ç›®æ ‡æ£‹å­åæ ‡æ”¹å˜ï¼Œå¹³ç§»è‡³è½ç‚¹
 							if (ifError == true)
 							{
 								ifError = false;
@@ -299,24 +299,24 @@ int main()
 								//ifError = false;
 								//cout << "ok"<<endl;//test
 							}
-							//cout << "Îå";//test
+							//cout << "äº”";//test
 						}
-						//cout << "Æ½";//test
+						//cout << "å¹³";//test
 					}
 				}
 			}
 
-			//ÂÖµ½ºÚ·½Ö´×Ó
+			//è½®åˆ°é»‘æ–¹æ‰§å­
 			isBlack = true;
-			//cout << "°Ë";//test
+			//cout << "å…«";//test
 		}
 
-		//ÕâÀïÎªÂÖµ½ºÚ×ÓĞĞ¶¯µÄÊ±¿Ì£¬¶ÔÓÚºÚ×ÓÀ´Ëµ£¬ÃüÁîÖĞµÄ¡°°Ë¡±£¬¶ÔÓ¦µÄÊÇºì·½µÄ¡°¶ş¡±£¬¼òµ¥µÄ×ø±ê±ä»»£¬ÆäËüÀàËÆ
-		/*else if (isBlack == true && command.substr(2, 4) == '°Ë')
+		//è¿™é‡Œä¸ºè½®åˆ°é»‘å­è¡ŒåŠ¨çš„æ—¶åˆ»ï¼Œå¯¹äºé»‘å­æ¥è¯´ï¼Œå‘½ä»¤ä¸­çš„â€œå…«â€ï¼Œå¯¹åº”çš„æ˜¯çº¢æ–¹çš„â€œäºŒâ€ï¼Œç®€å•çš„åæ ‡å˜æ¢ï¼Œå…¶å®ƒç±»ä¼¼
+		/*else if (isBlack == true && command.substr(2, 4) == 'å…«')
 		{
 
 		}*/
-		//cout << "ÅÚ";//test
+		//cout << "ç‚®";//test
 	}
 
 	updataBoard(checkerBoard, chess);
